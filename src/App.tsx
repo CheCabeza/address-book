@@ -1,13 +1,15 @@
 import React from 'react';
+import AddressBook from './components/addressBook/AddressBook';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-
-      <p>hola</p>
-
-    </div>
+    <>
+      <header>
+        <p>hola</p>
+      </header>
+      <AddressBook />
+    </>
   );
 }
 
