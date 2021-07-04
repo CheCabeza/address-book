@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import useLocalStorage from '../../utils/useLocalStorage';
 
 export default function AddressBook() {
-  const [myList, newAddress, deleteAddress, updateAddress] = useLocalStorage('newBook', []);
+  const [myBook, newAddress, deleteAddress, updateAddress] = useLocalStorage('newBook', []);
   const [firstNameValue, setFirstNameValue] = useState('');
   const [lastNameValue, setLastNameValue] = useState('');
   const [emailValue, setEmailValue] = useState('');
@@ -10,7 +10,7 @@ export default function AddressBook() {
 
   function addAddress() {
     newAddress({
-      id: myList.length,
+      id: myBook.length,
       firstName: firstNameValue,
       lastName: lastNameValue,
       email: emailValue,
@@ -21,16 +21,16 @@ export default function AddressBook() {
   }
 
   return (
-    <section className="newAddress-section">
-      <div className="newAddress-container">
-        <input type="text" className="newFirstName-input" onChange={(event) => setFirstNameValue(event.target.value)} value={firstNameValue} />
-        <input type="text" className="newLastName-input" onChange={(event) => setLastNameValue(event.target.value)} value={lastNameValue} />
-        <input type="text" className="newEmail-input" onChange={(event) => setEmailValue(event.target.value)} value={emailValue} />
-        <input type="text" className="newCountry-input" onChange={(event) => setCountryValue(event.target.value)} value={countryValue} />
+    <section className="addressBook">
+      <div className="addressBook__newAddress">
+        <input type="text" placeholder="First Name" className="newFirstName-input" onChange={(event) => setFirstNameValue(event.target.value)} value={firstNameValue} />
+        <input type="text" placeholder="Last Name" className="newLastName-input" onChange={(event) => setLastNameValue(event.target.value)} value={lastNameValue} />
+        <input type="text" placeholder="Email" className="newEmail-input" onChange={(event) => setEmailValue(event.target.value)} value={emailValue} />
+        <input type="text" placeholder="Country" className="newCountry-input" onChange={(event) => setCountryValue(event.target.value)} value={countryValue} />
         <button type="button" data-testid="addAddress-button" className="newAddress-button" onClick={() => addAddress()}>Add</button>
       </div>
-      <div className="address-container">
-        <ul className="address-book">
+      <div className="addressBook__storedBook">
+        <ul className="storedBook__list">
           {
             myBook.length
               ? myBook.map((Address: any) => (
