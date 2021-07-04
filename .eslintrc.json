@@ -1,4 +1,11 @@
 {
+    "settings": {
+        "import/resolver": {
+          "node": {
+            "extensions": [".js", ".jsx", ".ts", ".tsx"]
+          }
+        }
+      },
     "env": {
         "browser": true,
         "es2021": true
@@ -20,5 +27,9 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": ["error"],
+        "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts", "scss", ".js", ".jsx"] }],
+        "import/extensions": "off"
     }
 }
