@@ -18,6 +18,9 @@ export default function AddressBook() {
     });
 
     setFirstNameValue('');
+    setLastNameValue('');
+    setEmailValue('');
+    setCountryValue('');
   }
 
   return (
@@ -29,9 +32,8 @@ export default function AddressBook() {
         <input type="text" placeholder="Country" className="newCountry-input" onChange={(event) => setCountryValue(event.target.value)} value={countryValue} />
         <button type="button" data-testid="addAddress-button" className="newAddress-button" onClick={() => addAddress()}>Add</button>
       </div>
-      <div className="addressBook__storedBook">
-        <ul className="storedBook__list">
-          {
+      <ul className="storedBook__list">
+        {
             myBook.length
               ? myBook.map((Address: any) => (
 
@@ -64,7 +66,7 @@ export default function AddressBook() {
                     value={Address.country}
                     readOnly
                   />
-                  <button key={Address.id} type="button" className="update-btn" onClick={() => { updateAddress(Address); }}>
+                  <button key={`update-btn${Address.id}`} type="button" className="update-btn" onClick={() => { updateAddress(Address); }}>
                     <p>update</p>
                   </button>
                   <button key={Address.id} type="button" className="trash-btn" onClick={() => { deleteAddress(Address); }}>
@@ -76,8 +78,7 @@ export default function AddressBook() {
               : null
             }
 
-        </ul>
-      </div>
+      </ul>
     </section>
 
   );
