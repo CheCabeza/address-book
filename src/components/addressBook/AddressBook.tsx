@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Dropdown from 'react-dropdown';
 import { getNames } from 'country-list';
+import { VscNewFile } from 'react-icons/vsc';
+import { RiDeleteBinFill, RiEditBoxFill } from 'react-icons/ri';
 import useLocalStorage from '../../utils/useLocalStorage';
 import './AddressBook.scss';
 import 'react-dropdown/style.css';
@@ -35,7 +37,7 @@ export default function AddressBook() {
         <input type="text" placeholder="Last Name" className="newLastName-input" onChange={(event) => setLastNameValue(event.target.value)} value={lastNameValue} />
         <input type="text" placeholder="Email" className="newEmail-input" onChange={(event) => setEmailValue(event.target.value)} value={emailValue} />
         <Dropdown options={countries} onChange={(event) => setCountryValue(event.value)} value={countryValue} placeholder="Country" />
-        <button type="button" data-testid="addAddress-button" className="newAddress-button" onClick={() => addAddress()}>Add</button>
+        <VscNewFile size="40px" className="newAddress-button" onClick={() => addAddress()} />
       </div>
       <ul className="storedBook__list">
         {
@@ -71,12 +73,8 @@ export default function AddressBook() {
                     value={Address.country}
                     readOnly
                   />
-                  <button key={`update-btn${Address.id}`} type="button" className="update-btn" onClick={() => { updateAddress(Address); }}>
-                    <p>update</p>
-                  </button>
-                  <button key={Address.id} type="button" className="trash-btn" onClick={() => { deleteAddress(Address); }}>
-                    <p>delete</p>
-                  </button>
+                  <RiEditBoxFill key={`update-btn${Address.id}`} size="40px" className="update-btn" onClick={() => { updateAddress(Address); }} />
+                  <RiDeleteBinFill key={`delete-btn${Address.id}`} size="40px" className="trash-btn" onClick={() => { deleteAddress(Address); }} />
                 </div>
 
               ))
