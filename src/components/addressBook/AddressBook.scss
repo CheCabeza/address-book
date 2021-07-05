@@ -12,15 +12,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+    
 }
 .addressBook__newAddress  {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     width: 30%;
-    border: 1px solid black;
     border-radius: 50px 50px 0px 0px;
+    background-color: $yellow;
+    box-shadow: $shadow;
+    margin: 30px;
+
 
 .newAddress-button {
     cursor: pointer;
@@ -34,11 +40,18 @@ input {
 
 }
 
-.storedBook__list {
+.address-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     padding: 30px;
     background-color: $yellow;
     border-radius: 50px 50px 50px 50px;
     box-shadow: $shadow;
+    margin: 15px;
+    li {
+        
+    }
     input {
         background-color: $kindOfYellow;
         border-radius: 30px;
