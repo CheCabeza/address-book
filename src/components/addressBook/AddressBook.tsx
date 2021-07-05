@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Dropdown from 'react-dropdown';
 import { getNames } from 'country-list';
 import useLocalStorage from '../../utils/useLocalStorage';
+import './AddressBook.scss';
 import 'react-dropdown/style.css';
 
 export default function AddressBook() {
