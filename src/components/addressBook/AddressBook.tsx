@@ -1,8 +1,11 @@
+/* eslint-disable no-unused-expressions */
 import React, { useState } from 'react';
 import Dropdown from 'react-dropdown';
 import { getNames } from 'country-list';
 import { VscNewFile } from 'react-icons/vsc';
 import { RiDeleteBinFill, RiEditBoxFill } from 'react-icons/ri';
+import { useForm } from 'react-hook-form';
+import { addressSchema } from '../../validations/AddressValidation';
 import useLocalStorage from '../../utils/useLocalStorage';
 import './AddressBook.scss';
 import 'react-dropdown/style.css';
@@ -15,14 +18,17 @@ export default function AddressBook() {
   const [countryValue, setCountryValue] = useState('');
   const countries = getNames();
 
-  function addAddress() {
-    newAddress({
+  async function addAddress() {
+    const addressToAdd = {
       id: myBook.length,
       firstName: firstNameValue,
       lastName: lastNameValue,
       email: emailValue,
       country: countryValue,
-    });
+    };
+
+    const isValid = await addressSchema.isValid(addressToAdd);
+    isValid ? newAddress(addressToAdd) : null;
 
     setFirstNameValue('');
     setLastNameValue('');

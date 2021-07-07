@@ -1,8 +1,8 @@
 import * as yup from 'yup';
 
-const addressSchema = yup.object().shape({
+export const addressSchema = yup.object().shape({
   firstName: yup.string().required(),
   lastName: yup.string().required(),
-  email: yup.string().email().required(),
+  email: yup.string().email('Email is invalid').required(),
   country: yup.string().required(),
 });
